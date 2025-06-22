@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liquid Glass - The Future of Surfaces</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000;
+            color: #fff;
+        }
+        /* "Spatial Tinting": Deeper blur and subtler tint for more depth */
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        /* "Quiet Design": More subtle hero gradient */
+        .hero-gradient {
+            background: radial-gradient(circle at 50% 50%, rgba(58, 10, 218, 0.2), rgba(0,0,0,0) 50%);
+        }
+        .product-card canvas {
+            cursor: grab;
+        }
+        .product-card canvas:active {
+            cursor: grabbing;
+        }
+        /* "Floating Controls": Updated box-shadow for a softer lift, as per the new design language */
+        .buy-button {
+            background: #0071e3;
+            transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 113, 227, 0.2), 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        .buy-button:hover {
+            background: #0077ed;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 113, 227, 0.3), 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div id="root" class="min-h-screen">
+
+        <!-- Header -->
+        <header class="fixed top-0 left-0 right-0 z-50 glass-effect">
+            <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+                <div class="text-2xl font-bold tracking-tight">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block mr-2"><path d="M8.5 10.5c.9-2.2 2.7-3.8 5-4.5"/><path d="M9 14c-2.2.9-3.8 2.7-4.5 5"/><path d="m14 9-1-1"/><path d="m15 8 1 1"/><path d="M10.5 15.5c2.2.9 3.8 2.7 4.5 5"/><path d="M14 9c2.2-.9 3.8-2.7 4.5-5"/><circle cx="12" cy="12" r="10"/></svg>
+                    Liquid Glass
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#products" class="hover:text-gray-300">Products</a>
+                    <a href="#features" class="hover:text-gray-300">Features</a>
+                    <a href="#" class="hover:text-gray-300">Support</a>
+                </div>
+                <button class="buy-button text-white px-5 py-2 rounded-full text-sm font-semibold">
+                    Buy Now
+                </button>
+            </nav>
+        </header>
+
+        <!-- Hero Section -->
+        <main class="pt-24">
+            <section class="hero-gradient text-center pt-20 pb-32">
+                <div class="container mx-auto px-6">
+                    <h1 class="text-5xl md:text-7xl font-bold leading-tight tracking-tighter mb-4">
+                        Delightfully elegant.
+                    </h1>
+                    <p class="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-8">
+                        Discover the new standard in digital materials. Crafted with precision, designed for intuition.
+                    </p>
+                    <a href="#products" class="bg-white text-black text-lg font-semibold px-8 py-3 rounded-full hover:bg-gray-200 transition">
+                        See the lineup
+                    </a>
+                </div>
+            </section>
+
+            <!-- Products Section -->
+            <section id="products" class="container mx-auto px-6 py-20">
+                <h2 class="text-4xl font-bold text-center mb-16">Our Component Collection</h2>
+                <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                    <!-- Product cards will be injected here by JavaScript -->
+                </div>
+            </section>
+
+             <!-- Features Section -->
+            <section id="features" class="py-20">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-16">
+                         <h2 class="text-4xl font-bold">In a class of its own.</h2>
+                         <p class="text-xl text-gray-400 mt-2">Liquid Glass is packed with features.</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                        <div class="p-8">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-4 text-blue-400"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-5.5-5.5a7 7 0 0 0-7 7c0 2 1 3.9 3 5.5s3.5 4 5.5 5.5Z"/></svg>
+                            <h3 class="text-xl font-semibold mb-2">Self-Healing</h3>
+                            <p class="text-gray-400">Minor scratches and scuffs disappear automatically, keeping the surface pristine.</p>
+                        </div>
+                        <div class="p-8">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-4 text-green-400"><path d="m21.73 18-8-14a2 2 0 0 0-3.46 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+                            <h3 class="text-xl font-semibold mb-2">Impact Resistant</h3>
+                            <p class="text-gray-400">Engineered to absorb and distribute impact, providing superior protection.</p>
+                        </div>
+                        <div class="p-8">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-4 text-purple-400"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+                            <h3 class="text-xl font-semibold mb-2">Optical Clarity</h3>
+                            <p class="text-gray-400">Flawless transparency for vibrant displays and an unobstructed view.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="border-t border-gray-800 mt-20">
+            <div class="container mx-auto px-6 py-8 text-center text-gray-500">
+                <p>&copy; 2025 Liquid Glass Inc. All rights reserved.</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Product Data ---
+            const products = [
+                {
+                    id: 'lg-card-01',
+                    name: 'Crystal Card',
+                    description: 'A floating, translucent card base for displaying profile info, stats, or media content.',
+                    price: 149.00,
+                    model: {
+                        geometry: new THREE.TorusKnotGeometry(1.2, 0.25, 100, 16),
+                        color: 0xffffff,
+                        metalness: 0,
+                        roughness: 0.1,
+                        transmission: 1.0,
+                        ior: 1.5,
+                        thickness: 1.0
+                    }
+                },
+                 {
+                    id: 'lg-button-01',
+                    name: 'Liquid Button',
+                    description: 'A satisfyingly smooth button that subtly refracts light on interaction.',
+                    price: 49.00,
+                    model: {
+                        geometry: new THREE.SphereGeometry(1.2, 64, 64),
+                        color: 0x0071e3,
+                        metalness: 0.1,
+                        roughness: 0.2,
+                        transmission: 0.9,
+                        ior: 1.4,
+                        thickness: 0.8
+                    }
+                },
+                {
+                    id: 'lg-icon-01',
+                    name: 'Glowing Icon Set',
+                    description: 'A set of beautifully crafted glass icons that seem to emit their own light.',
+                    price: 79.00,
+                    model: {
+                        geometry: new THREE.IcosahedronGeometry(1.5, 0),
+                        color: 0x34c759,
+                        metalness: 0.1,
+                        roughness: 0.1,
+                        transmission: 0.95,
+                        ior: 1.5,
+                        thickness: 1.2
+                    }
+                },
+                 {
+                    id: 'lg-menu-01',
+                    name: 'Floating Menu',
+                    description: 'A sleek, transparent menu bar that hovers elegantly on any interface.',
+                    price: 99.00,
+                    model: {
+                        geometry: new THREE.TorusGeometry(1.3, 0.2, 16, 100),
+                        color: 0xaf52de,
+                        metalness: 0.2,
+                        roughness: 0.2,
+                        transmission: 0.9,
+                        ior: 1.6,
+                        thickness: 0.5
+                    }
+                },
+                {
+                    id: 'lg-sidebar-01',
+                    name: 'Sidebar Pane',
+                    description: 'A full-height sidebar panel that provides a stunning, blurred view of the content behind it.',
+                    price: 179.00,
+                    model: {
+                        geometry: new THREE.CylinderGeometry(1, 1, 3, 32),
+                        color: 0x5e5ce6,
+                        metalness: 0.1,
+                        roughness: 0.3,
+                        transmission: 0.85,
+                        ior: 1.45,
+                        thickness: 1.5
+                    }
+                },
+                 {
+                    id: 'lg-footer-01',
+                    name: 'Footer Bar',
+                    description: 'A solid, grounded footer element that adds a touch of class to any application view.',
+                    price: 119.00,
+                    model: {
+                        geometry: new THREE.BoxGeometry(2.5, 0.5, 0.5),
+                        color: 0x636366,
+                        metalness: 0.3,
+                        roughness: 0.4,
+                        transmission: 0.7,
+                        ior: 1.7,
+                        thickness: 1.0
+                    }
+                },
+            ];
+
+            const productGrid = document.getElementById('product-grid');
+            const rendererMap = new Map();
+
+            // --- Create Product Cards ---
+            products.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'product-card glass-effect rounded-3xl p-8 flex flex-col items-center text-center';
+                
+                const rendererContainer = document.createElement('div');
+                rendererContainer.className = 'h-64 w-full mb-6';
+                rendererContainer.id = `renderer-${product.id}`;
+
+                const name = document.createElement('h3');
+                name.className = 'text-2xl font-bold mb-2';
+                name.textContent = product.name;
+
+                const description = document.createElement('p');
+                description.className = 'text-gray-400 mb-4 flex-grow';
+                description.textContent = product.description;
+
+                const price = document.createElement('p');
+                price.className = 'text-xl font-semibold mb-6';
+                price.textContent = `$${product.price.toFixed(2)}`;
+
+                const button = document.createElement('button');
+                button.className = 'buy-button text-white font-semibold px-8 py-3 rounded-full w-full';
+                button.textContent = 'Add to Cart';
+
+                card.appendChild(rendererContainer);
+                card.appendChild(name);
+                card.appendChild(description);
+                card.appendChild(price);
+                card.appendChild(button);
+                
+                productGrid.appendChild(card);
+                rendererMap.set(rendererContainer, product.model);
+            });
+            
+            // --- Set up Intersection Observer to initialize 3D scenes when visible ---
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const container = entry.target;
+                        const modelConfig = rendererMap.get(container);
+                        if (modelConfig) {
+                            init3D(container.id, modelConfig);
+                            observer.unobserve(container); // Initialize only once
+                        }
+                    }
+                });
+            }, { 
+                rootMargin: "50px" // Start loading when the element is 50px away from the viewport
+            });
+
+            // Start observing all renderer containers
+            document.querySelectorAll('.h-64.w-full.mb-6').forEach(container => {
+                observer.observe(container);
+            });
+
+
+            // --- 3D Renderer Logic ---
+            function init3D(containerId, modelConfig) {
+                const container = document.getElementById(containerId);
+                if (!container || container.clientWidth === 0) {
+                    console.error(`3D container not ready or has no size: ${containerId}`);
+                    return;
+                }
+
+                let scene, camera, renderer, model;
+                let isMouseDown = false;
+                let mouseX = 0, mouseY = 0;
+                let targetRotationX = 0, targetRotationY = 0;
+                let clock = new THREE.Clock(); // For quiet animation
+
+
+                // Scene setup
+                scene = new THREE.Scene();
+
+                // Camera setup
+                camera = new THREE.PerspectiveCamera(50, container.clientWidth / container.clientHeight, 0.1, 100);
+                camera.position.z = 5;
+
+                // Renderer setup
+                renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+                renderer.setPixelRatio(window.devicePixelRatio);
+                renderer.setSize(container.clientWidth, container.clientHeight);
+                container.appendChild(renderer.domElement);
+                
+                // Lighting
+                const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+                scene.add(ambientLight);
+                
+                const pointLight1 = new THREE.PointLight(0xffffff, 0.8);
+                pointLight1.position.set(10, 10, 10);
+                scene.add(pointLight1);
+                
+                const pointLight2 = new THREE.PointLight(0xffffff, 0.5);
+                pointLight2.position.set(-10, -10, 5);
+                scene.add(pointLight2);
+
+
+                // Model setup
+                const geometry = modelConfig.geometry;
+                const material = new THREE.MeshPhysicalMaterial({
+                    color: modelConfig.color,
+                    metalness: modelConfig.metalness,
+                    roughness: modelConfig.roughness,
+                    transmission: modelConfig.transmission,
+                    ior: modelConfig.ior,
+                    thickness: modelConfig.thickness,
+                    clearcoat: 1.0,
+                    clearcoatRoughness: 0.1,
+                    envMapIntensity: 1
+                });
+
+                model = new THREE.Mesh(geometry, material);
+                scene.add(model);
+
+                // --- Interaction Handlers ---
+                container.addEventListener('mousedown', onMouseDown, false);
+                container.addEventListener('mousemove', onMouseMove, false);
+                container.addEventListener('mouseup', onMouseUp, false);
+                container.addEventListener('mouseleave', onMouseUp, false);
+                window.addEventListener('resize', onWindowResize, false);
+
+
+                function onMouseDown(event) {
+                    event.preventDefault();
+                    isMouseDown = true;
+                    mouseX = event.clientX - container.getBoundingClientRect().left;
+                    mouseY = event.clientY - container.getBoundingClientRect().top;
+                }
+
+                function onMouseMove(event) {
+                    if (isMouseDown) {
+                        const newMouseX = event.clientX - container.getBoundingClientRect().left;
+                        const newMouseY = event.clientY - container.getBoundingClientRect().top;
+
+                        targetRotationY += (newMouseX - mouseX) * 0.02;
+                        targetRotationX += (newMouseY - mouseY) * 0.02;
+
+                        mouseX = newMouseX;
+                        mouseY = newMouseY;
+                    }
+                }
+
+                function onMouseUp() {
+                    isMouseDown = false;
+                }
+
+                function onWindowResize() {
+                    if(container.clientWidth > 0 && container.clientHeight > 0) {
+                        camera.aspect = container.clientWidth / container.clientHeight;
+                        camera.updateProjectionMatrix();
+                        renderer.setSize(container.clientWidth, container.clientHeight);
+                    }
+                }
+                
+                // Animation loop
+                function animate() {
+                    requestAnimationFrame(animate);
+                    const elapsedTime = clock.getElapsedTime();
+
+                    // Smooth rotation
+                    model.rotation.y += (targetRotationY - model.rotation.y) * 0.1;
+                    model.rotation.x += (targetRotationX - model.rotation.x) * 0.1;
+                    
+                    // "Quiet Animation": Add a gentle floating motion
+                    if (!isMouseDown) {
+                        targetRotationY *= 0.98;
+                        targetRotationX *= 0.98;
+                        model.rotation.y += 0.002;
+                        model.position.y = Math.sin(elapsedTime * 0.5) * 0.1;
+                    }
+
+                    renderer.render(scene, camera);
+                }
+
+                animate();
+            }
+        });
+    </script>
+</body>
+</html>

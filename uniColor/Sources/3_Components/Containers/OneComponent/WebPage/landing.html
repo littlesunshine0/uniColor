@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page - Developer Documentation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="page-wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-header">Documentation</div>
+            <nav class="sidebar-nav">
+                <a href="landing.html" class="active"><i class="fa-solid fa-home"></i>Home</a>
+                <a href="welcome.html"><i class="fa-solid fa-user"></i>Welcome</a>
+                <a href="documentation.html"><i class="fa-solid fa-box-archive"></i>Documentation</a>
+                <a href="onboarding.html"><i class="fa-solid fa-clipboard-list"></i>Onboarding</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <section id="introduction">
+                <h1>Welcome to Developer Documentation</h1>
+                <p class="subtitle">Explore our tools and resources to enhance your development experience.</p>
+
+                <!-- Moved search bar here -->
+                <div class="search-container">
+                    <input id="search" type="text" placeholder="Search documentation..." aria-label="Search">
+                    <button id="search-btn"><i class="fa-solid fa-search"></i></button>
+                </div>
+
+                <div class="card-grid">
+                    <a href="documentation.html" class="feature-card">
+                        <div class="card-visual" id="visual-docs">
+                            <i class="fa-solid fa-book"></i>
+                        </div>
+                        <div class="card-text">
+                            <h3 class="card-title">Documentation</h3>
+                            <p class="card-description">Comprehensive guides and API references.</p>
+                        </div>
+                    </a>
+                    <a href="onboarding.html" class="feature-card">
+                        <div class="card-visual" id="visual-onboarding">
+                            <i class="fa-solid fa-user-plus"></i>
+                        </div>
+                        <div class="card-text">
+                            <h3 class="card-title">Onboarding</h3>
+                            <p class="card-description">Get started with our tools quickly.</p>
+                        </div>
+                    </a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

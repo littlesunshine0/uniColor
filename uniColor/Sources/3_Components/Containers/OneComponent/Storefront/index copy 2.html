@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liquid Glass - Digital & Physical Asset Store</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000;
+            color: #fff;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at 50% 50%, rgba(58, 10, 218, 0.25), rgba(0,0,0,0) 50%);
+        }
+        .product-card canvas {
+            cursor: grab;
+        }
+        .product-card canvas:active {
+            cursor: grabbing;
+        }
+        .buy-button {
+            background: #0071e3;
+            transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 113, 227, 0.2), 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        .buy-button:hover {
+            background: #0077ed;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 113, 227, 0.3), 4px 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div id="root" class="min-h-screen">
+
+        <!-- Header -->
+        <header class="fixed top-0 left-0 right-0 z-50 glass-effect">
+            <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+                <div class="text-2xl font-bold tracking-tight">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block mr-2"><path d="M8.5 10.5c.9-2.2 2.7-3.8 5-4.5"/><path d="M9 14c-2.2.9-3.8 2.7-4.5 5"/><path d="m14 9-1-1"/><path d="m15 8 1 1"/><path d="M10.5 15.5c2.2.9 3.8 2.7 4.5 5"/><path d="M14 9c2.2-.9 3.8-2.7 4.5-5"/><circle cx="12" cy="12" r="10"/></svg>
+                    Liquid Glass
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#physical-products" class="hover:text-gray-300">Objects</a>
+                    <a href="#components" class="hover:text-gray-300">Components</a>
+                    <a href="#manifests" class="hover:text-gray-300">Manifests</a>
+                    <a href="#kits" class="hover:text-gray-300">UI Kits</a>
+                    <a href="#features" class="hover:text-gray-300">Features</a>
+                </div>
+                <button class="buy-button text-white px-5 py-2 rounded-full text-sm font-semibold">
+                    Get Started
+                </button>
+            </nav>
+        </header>
+
+        <!-- Hero Section -->
+        <main class="pt-24">
+            <section class="hero-gradient text-center pt-20 pb-32">
+                <div class="container mx-auto px-6">
+                    <h1 class="text-5xl md:text-7xl font-bold leading-tight tracking-tighter mb-4">
+                        The clear choice for a new state of matter.
+                    </h1>
+                    <p class="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-8">
+                        Experience our revolutionary collection of physical objects and digital assets, built with our signature Liquid Glass technology.
+                    </p>
+                    <a href="#physical-products" class="bg-white text-black text-lg font-semibold px-8 py-3 rounded-full hover:bg-gray-200 transition">
+                        Browse the Collection
+                    </a>
+                </div>
+            </section>
+
+            <!-- Physical Products Section -->
+            <section id="physical-products" class="container mx-auto px-6 py-20">
+                <h2 class="text-4xl font-bold text-center mb-16">The Signature Collection</h2>
+                <div id="physical-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                    <!-- Physical product cards will be injected here -->
+                </div>
+            </section>
+            
+            <!-- Features Section -->
+            <section id="features" class="py-20 bg-gray-900/50">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-16">
+                         <h2 class="text-4xl font-bold">In a class of its own.</h2>
+                         <p class="text-xl text-gray-400 mt-2">The Liquid Glass material is packed with features.</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                        <!-- Feature items injected here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Digital Components Section -->
+            <section id="components" class="container mx-auto px-6 py-20">
+                <h2 class="text-4xl font-bold text-center mb-16">Component Library</h2>
+                <div id="component-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                    <!-- UI Component Product cards will be injected here -->
+                </div>
+            </section>
+
+            <!-- OS Manifests Section -->
+            <section id="manifests" class="container mx-auto px-6 py-20 bg-black">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold mb-4">Core OS Manifests</h2>
+                    <p class="text-gray-400 max-w-2xl mx-auto">Foundational architecture & intelligence layers. Licensed for platform development.</p>
+                </div>
+                <div id="manifest-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                    <!-- OS Manifest cards will be injected here -->
+                </div>
+            </section>
+            
+            <!-- UI Kits Section -->
+            <section id="kits" class="container mx-auto px-6 py-20">
+                <h2 class="text-4xl font-bold text-center mb-16">Full Application Kits</h2>
+                 <div id="kit-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                    <!-- UI Kit cards will be injected here -->
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="border-t border-gray-800 mt-20">
+            <div class="container mx-auto px-6 py-8 text-center text-gray-500">
+                <p>© 2025 Liquid Glass Digital Inc. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // =================================================================
+            // INVENTORY & DATA
+            // =================================================================
+            
+            const physicalProducts = [
+                { id: 'lg-orb-01', name: 'The Orb', description: 'A perfect sphere of Liquid Glass. Ideal for focus, meditation, or as a stunning centerpiece.', price: 129.00, model: { geometryConfig: { type: 'SphereGeometry', args: [1.5, 64, 64] }, materialConfig: { color: 0xffffff, transmission: 1.0, roughness: 0.05, ior: 1.5 } } },
+                { id: 'lg-slab-01', name: 'The Slab', description: 'A versatile panel of Liquid Glass. Use it as a futuristic coaster, a display base, or a protective layer.', price: 89.00, model: { geometryConfig: { type: 'BoxGeometry', args: [2.5, 0.2, 2.5] }, materialConfig: { color: 0xadd8e6, transmission: 0.95, roughness: 0.1, ior: 1.4 } } },
+                { id: 'lg-icosa-01', name: 'The Icosa', description: 'A complex icosahedron that beautifully refracts light. A testament to modern engineering.', price: 199.00, model: { geometryConfig: { type: 'IcosahedronGeometry', args: [1.5, 0] }, materialConfig: { color: 0x9370db, transmission: 0.9, roughness: 0.2, ior: 1.6 } } }
+            ];
+
+            const components = [
+                { id: 'ui-buttons-01', name: 'Liquid Buttons & Controls', description: 'A set of buttons, toggles, and sliders with subtle, physics-based animations.', price: 29.00, model: { geometryConfig: { type: 'SphereGeometry', args: [1.2, 64, 64] }, materialConfig: { color: 0x0071e3 } } },
+                { id: 'ui-icons-01', name: 'Crystal Icon Set', description: 'Beautifully designed SVG icons in multiple styles with a subtle shimmer effect on hover.', price: 39.00, model: { geometryConfig: { type: 'IcosahedronGeometry', args: [1.5, 0] }, materialConfig: { color: 0x34c759 } } },
+                { id: 'ui-cards-01', name: 'Floating Cards', description: 'A versatile card component with the signature glass effect, perfect for articles or profiles.', price: 19.00, model: { geometryConfig: { type: 'BoxGeometry', args: [2.5, 1.8, 0.15] }, materialConfig: { color: 0xffffff } } },
+            ];
+
+            const manifests = [
+                { id: 'manifest-sentience-arc', name: 'Sentience Arc Telemetry Suite', description: 'A complete telemetry & analysis pipeline for capturing user journeys into ML-ready datasets.', price: 499.00, tags: ['Telemetry', 'Data Schema', 'Analytics'], model: { geometryConfig: { type: 'SphereGeometry', args: [1.3, 64, 64] }, materialConfig: { color: 0x8B5CF6 } } },
+                { id: 'manifest-dualx-2-0', name: 'DualX Adaptive UI Framework', description: 'Core services for adaptive layouts and gesture recognition, enabling a unified UI across all platforms.', price: 899.00, tags: ['Adaptive UI', 'Cross-Platform', 'Framework'], model: { geometryConfig: { type: 'TorusGeometry', args: [1.2, 0.15, 16, 100], rotation: { x: Math.PI / 2 } }, materialConfig: { color: 0xEC4899 }, isComplex: true } },
+                { id: 'manifest-codex-protocol', name: 'Codex Developer Protocol', description: 'An opinionated governance layer for your IDE, enforcing code hygiene rules in real-time.', price: 249.00, tags: ['Developer Tool', 'Protocol', 'Code Quality'], model: { geometryConfig: { type: 'BoxGeometry', args: [2, 2.5, 0.2] }, materialConfig: { color: 0x3B82F6 } } },
+                { id: 'manifest-quantum-fs', name: 'Quantum Spatial File System', description: 'Transforms the core OS from an abstract desktop into a file-centric, spatial environment.', price: 349.00, tags: ['File System', 'OS Core', 'Spatial Computing'], model: { geometryConfig: { type: 'BoxGeometry', args: [1.8, 1.8, 1.8] }, materialConfig: { color: 0x34D399, wireframe: true } } },
+            ];
+
+            const kits = [
+                { id: 'kit-dashboard-01', name: '"Aurora" Dashboard Kit', description: 'A full dashboard template for analytics with data charts that appear as glowing holograms.', price: 99.00, model: { geometryConfig: { type: 'TorusKnotGeometry', args: [1.2, 0.25, 100, 16] }, materialConfig: { color: 0xff2d55 } } },
+                { id: 'kit-mobile-01', name: '"Nebula" Mobile App Theme', description: 'A complete UI theme for mobile apps, including matching icons, splash screens, and navigation.', price: 129.00, model: { geometryConfig: { type: 'OctahedronGeometry', args: [1.6, 0] }, materialConfig: { color: 0x5856d6 } } },
+            ];
+
+            // --- FIX: The 'features' array now contains the full, correct SVG code for each icon ---
+            const features = [
+                { 
+                    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-4 text-blue-400"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-5.5-5.5a7 7 0 0 0-7 7c0 2 1 3.9 3 5.5s3.5 4 5.5 5.5Z"/></svg>`, 
+                    title: 'Self-Healing', 
+                    description: 'Minor scratches and scuffs disappear automatically, keeping the surface pristine.' 
+                },
+                { 
+                    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-4 text-green-400"><path d="m21.73 18-8-14a2 2 0 0 0-3.46 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/></svg>`, 
+                    title: 'Impact Resistant', 
+                    description: 'Engineered to absorb and distribute impact, providing superior protection.' 
+                },
+                { 
+                    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-4 text-purple-400"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>`, 
+                    title: 'Optical Clarity', 
+                    description: 'Flawless transparency for vibrant displays and an unobstructed view.' 
+                },
+            ];
+
+            // =================================================================
+            // CARD CREATION & INJECTION
+            // =================================================================
+
+            function createProductCard(product) {
+                const card = document.createElement('div');
+                card.className = 'product-card glass-effect rounded-3xl p-8 flex flex-col items-center text-center';
+                const rendererContainer = document.createElement('div');
+                rendererContainer.className = 'h-64 w-full mb-6 renderer-container';
+                rendererContainer.id = `renderer-${product.id}`;
+                const name = document.createElement('h3');
+                name.className = 'text-2xl font-bold mb-2';
+                name.textContent = product.name;
+                const description = document.createElement('p');
+                description.className = 'text-gray-400 mb-4 flex-grow';
+                description.textContent = product.description;
+                const price = document.createElement('p');
+                price.className = 'text-xl font-semibold mb-6';
+                price.textContent = `$${product.price.toFixed(2)}`;
+                const button = document.createElement('button');
+                button.className = 'buy-button text-white font-semibold px-8 py-3 rounded-full w-full';
+                button.textContent = 'Add to Cart';
+                card.append(rendererContainer, name, description, price, button);
+                return card;
+            }
+
+            function createManifestCard(manifest) {
+                const card = document.createElement('div');
+                card.className = 'glass-effect rounded-3xl p-6 flex flex-col items-center text-center border-l-4 border-indigo-500';
+                const rendererContainer = document.createElement('div');
+                rendererContainer.className = 'h-56 w-full mb-4 renderer-container';
+                rendererContainer.id = `renderer-${manifest.id}`;
+                const name = document.createElement('h3');
+                name.className = 'text-xl font-bold mb-2';
+                name.textContent = manifest.name;
+                const description = document.createElement('p');
+                description.className = 'text-gray-400 text-sm mb-4 flex-grow';
+                description.textContent = manifest.description;
+                const tagContainer = document.createElement('div');
+                tagContainer.className = 'flex flex-wrap justify-center gap-2 mb-4';
+                manifest.tags.forEach(tag => {
+                    const tagEl = document.createElement('span');
+                    tagEl.className = 'bg-gray-700 text-gray-300 text-xs font-semibold px-2.5 py-1 rounded-full';
+                    tagEl.textContent = tag;
+                    tagContainer.appendChild(tagEl);
+                });
+                const price = document.createElement('p');
+                price.className = 'text-lg font-semibold mb-5';
+                price.textContent = `License from $${manifest.price.toFixed(2)}`;
+                const button = document.createElement('button');
+                button.className = 'bg-indigo-600 text-white font-semibold px-6 py-2 rounded-full w-full hover:bg-indigo-500 transition-all';
+                button.textContent = 'View License';
+                card.append(rendererContainer, name, description, tagContainer, price, button);
+                return card;
+            }
+
+            document.getElementById('physical-grid').append(...physicalProducts.map(createProductCard));
+            document.getElementById('component-grid').append(...components.map(createProductCard));
+            document.getElementById('manifest-grid').append(...manifests.map(createManifestCard));
+            document.getElementById('kit-grid').append(...kits.map(createProductCard));
+            
+            const featuresGrid = document.querySelector('#features .grid');
+            featuresGrid.innerHTML = features.map(f => `<div class="p-8">${f.icon}<h3 class="text-xl font-semibold mb-2">${f.title}</h3><p class="text-gray-400">${f.description}</p></div>`).join('');
+
+
+            // =================================================================
+            // CONSOLIDATED 3D RENDERER ENGINE
+            // =================================================================
+
+            const rendererObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const container = entry.target;
+                        if (container.dataset.productId) {
+                            init3D(container, container.dataset.productId);
+                            observer.unobserve(container);
+                        }
+                    }
+                });
+            }, { rootMargin: "50px" });
+
+            [...physicalProducts, ...components, ...manifests, ...kits].forEach(p => {
+                const container = document.getElementById(`renderer-${p.id}`);
+                if (container) {
+                    container.dataset.productId = p.id;
+                    rendererObserver.observe(container);
+                }
+            });
+            
+            function createGeometry(config) {
+                switch (config.type) {
+                    case 'SphereGeometry': return new THREE.SphereGeometry(...config.args);
+                    case 'IcosahedronGeometry': return new THREE.IcosahedronGeometry(...config.args);
+                    case 'BoxGeometry': return new THREE.BoxGeometry(...config.args);
+                    case 'CylinderGeometry': return new THREE.CylinderGeometry(...config.args);
+                    case 'TorusGeometry': return new THREE.TorusGeometry(...config.args);
+                    case 'TorusKnotGeometry': return new THREE.TorusKnotGeometry(...config.args);
+                    case 'DodecahedronGeometry': return new THREE.DodecahedronGeometry(...config.args);
+                    case 'OctahedronGeometry': return new THREE.OctahedronGeometry(...config.args);
+                    default: return new THREE.BoxGeometry(1, 1, 1);
+                }
+            }
+
+            function init3D(container, productId) {
+                const productData = [...physicalProducts, ...components, ...manifests, ...kits].find(p => p.id === productId);
+                if (!productData) return;
+
+                const { model: modelConfig } = productData;
+
+                let scene, camera, renderer, model;
+                let isMouseDown = false, mouseX = 0, mouseY = 0, targetRotationX = 0, targetRotationY = 0;
+                
+                scene = new THREE.Scene();
+                camera = new THREE.PerspectiveCamera(50, container.clientWidth / container.clientHeight, 0.1, 100);
+                camera.position.z = 5;
+
+                renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+                renderer.setPixelRatio(window.devicePixelRatio);
+                renderer.setSize(container.clientWidth, container.clientHeight);
+                container.innerHTML = '';
+                container.appendChild(renderer.domElement);
+                
+                const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+                scene.add(ambientLight);
+                const pointLight = new THREE.PointLight(0xffffff, 0.9);
+                pointLight.position.set(10, 10, 10);
+                scene.add(pointLight);
+
+                const geometry = createGeometry(modelConfig.geometryConfig);
+                const materialConfig = modelConfig.materialConfig || {};
+                
+                const material = new THREE.MeshPhysicalMaterial({
+                    color: materialConfig.color || 0xffffff,
+                    metalness: materialConfig.metalness !== undefined ? materialConfig.metalness : 0.1,
+                    roughness: materialConfig.roughness !== undefined ? materialConfig.roughness : 0.1,
+                    transmission: materialConfig.transmission !== undefined ? materialConfig.transmission : 1.0,
+                    ior: materialConfig.ior || 1.5,
+                    thickness: materialConfig.thickness || 1.0,
+                    clearcoat: 1.0,
+                    clearcoatRoughness: 0.1,
+                    wireframe: materialConfig.wireframe || false,
+                });
+
+                model = new THREE.Mesh(geometry, material);
+
+                if (modelConfig.isComplex) {
+                     if (productId === 'manifest-dualx-2-0') {
+                         const secondTorusGeom = new THREE.TorusGeometry(...modelConfig.geometryConfig.args);
+                         const secondTorus = new THREE.Mesh(secondTorusGeom, material);
+                         secondTorus.rotation.y = Math.PI / 2;
+                         model.add(secondTorus);
+                     }
+                }
+                scene.add(model);
+                
+                function onMouseDown(e) { e.preventDefault(); isMouseDown = true; mouseX = e.clientX; mouseY = e.clientY; }
+                function onMouseUp() { isMouseDown = false; }
+                function onMouseMove(e) {
+                    if (isMouseDown) {
+                        targetRotationY += (e.clientX - mouseX) * 0.02;
+                        targetRotationX += (e.clientY - mouseY) * 0.02;
+                        mouseX = e.clientX; mouseY = e.clientY;
+                    }
+                }
+                container.addEventListener('mousedown', onMouseDown);
+                container.addEventListener('mouseup', onMouseUp);
+                container.addEventListener('mouseleave', onMouseUp);
+                container.addEventListener('mousemove', onMouseMove);
+
+                function animate() {
+                    requestAnimationFrame(animate);
+                    model.rotation.y += (targetRotationY - model.rotation.y) * 0.1;
+                    model.rotation.x += (targetRotationX - model.rotation.x) * 0.1;
+                    if (!isMouseDown) {
+                        targetRotationY *= 0.98;
+                        targetRotationX *= 0.98;
+                        model.rotation.y += 0.001;
+                    }
+                    renderer.render(scene, camera);
+                }
+                animate();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- ... head ... -->
+<body>
+    <h1>Changelog: v3.0.0 - Catalyst</h1>
+    <p>This release marks a fundamental evolution of the library, officially rebranding to <strong><code>uniColor</code></strong> and graduating from a color utility to a comprehensive Design System Engine.</p>
+
+    <h3>🚨 BREAKING CHANGES 🚨</h3>
+    <ul>
+        <li><strong>API Redesign:</strong> The <code>Theme</code> and <code>ColorPalette</code> structs have been <strong>removed</strong> and replaced by the more powerful <code>DesignSystem</code> and <code>DesignToken</code> models.</li>
+        <li><strong><code>ThemeManager</code> Overhaul:</strong> The <code>ThemeManager</code>'s API has changed. It no longer manages <code>.currentTheme</code> but now manages <code>.currentDesignSystem</code>. The methods for applying themes have been updated accordingly.</li>
+        <li><strong>Token Access:</strong> Accessing theme values is now done via type-safe methods on <code>ThemeManager</code> (e.g., <code>ThemeManager.shared.color(name: "background")</code>) instead of direct property access on a palette.</li>
+    </ul>
+
+    <h3>✨ New Features</h3>
+    <ul>
+        <li><strong>Design Token System:</strong>
+            <ul>
+                <li>Introduced <code>DesignToken</code>, an enum that can represent colors, fonts, spacing, and radii.</li>
+                <li>Introduced <code>TokenKey</code> for type-safe, string-based retrieval of tokens.</li>
+            </ul>
+        </li>
+        <li><strong><code>DesignSystem</code> Model:</strong> A new top-level struct that acts as a registry for a complete collection of design tokens, forming a single source of truth for a theme.</li>
+        <li><strong>Upgraded <code>ThemeManager</code>:</strong>
+            <ul>
+                <li>Now a fully-fledged design system engine.</li>
+                <li>Provides type-safe accessors like <code>.color(name:)</code>, <code>.font(name:)</code>, and <code>.dimension(group:name:)</code> that <code>fatalError</code> if a token is missing or of the wrong type, ensuring immediate feedback during development.</li>
+            </ul>
+        </li>
+        <li><strong>Official Rebranding:</strong> The package name, product name, and all related artifacts are now standardized under the <code>uniColor</code> brand.</li>
+    </ul>
+
+    <h3>🐛 Bug Fixes &amp; Refinements</h3>
+    <ul>
+        <li>This version incorporates the critical bug fix for <code>UIColor</code> conversion and the fluent <code>.withOpacity()</code> modifier from the previous development cycle.</li>
+        <li>The <code>Package</code> model used in examples was corrected to conform to <code>Equatable</code> instead of <code>Hashable</code> to resolve compilation errors.</li>
+    </ul>
+</body>
+</html>

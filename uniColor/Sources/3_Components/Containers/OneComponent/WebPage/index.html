@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Developer Documentation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="page-wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <i class="fa-solid fa-code"></i>
+                Documentation
+            </div>
+            <nav class="sidebar-nav">
+                <a href="index.html" class="active"><i class="fa-solid fa-home"></i>Home</a>
+                <a href="landing.html"><i class="fa-solid fa-rocket"></i>Landing</a>
+                <a href="welcome.html"><i class="fa-solid fa-user"></i>Welcome</a>
+                <a href="documentation.html"><i class="fa-solid fa-book"></i>Documentation</a>
+                <a href="onboarding.html"><i class="fa-solid fa-clipboard-list"></i>Onboarding</a>
+                <a href="store.html"><i class="fa-solid fa-store"></i>Store</a>
+                <a href="pathways.html"><i class="fa-solid fa-route"></i>Pathways</a>
+            </nav>
+        </aside>
+        
+        <main class="main-content">
+            <header class="page-header">
+                <div class="theme-toggle">
+                    <button id="theme-toggle" aria-label="Toggle theme">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+                </div>
+            </header>
+            
+            <section id="home" class="content-section">
+                <div class="hero-section">
+                    <h1>Developer Documentation Hub</h1>
+                    <p class="subtitle">Your one-stop solution for all developer documentation and resources.</p>
+                    
+                    <div class="search-container">
+                        <div class="search-wrapper">
+                            <input type="text" id="search-input" placeholder="Search documentation..." aria-label="Search documentation">
+                            <button type="button" id="search-btn" aria-label="Search">
+                                <i class="fa-solid fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="quick-links">
+                    <h2>Quick Access</h2>
+                    <div class="links-grid">
+                        <a href="documentation.html" class="quick-link-card">
+                            <i class="fa-solid fa-book"></i>
+                            <h3>Documentation</h3>
+                            <p>Browse our comprehensive guides</p>
+                        </a>
+                        <a href="onboarding.html" class="quick-link-card">
+                            <i class="fa-solid fa-clipboard-list"></i>
+                            <h3>Onboarding</h3>
+                            <p>Get started with our platform</p>
+                        </a>
+                        <a href="pathways.html" class="quick-link-card">
+                            <i class="fa-solid fa-route"></i>
+                            <h3>Learning Pathways</h3>
+                            <p>Structured learning paths</p>
+                        </a>
+                        <a href="store.html" class="quick-link-card">
+                            <i class="fa-solid fa-store"></i>
+                            <h3>Resource Store</h3>
+                            <p>Tools and resources</p>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <script src="assets/js/shared.js"></script>
+    <script src="assets/js/search.js"></script>
+</body>
+</html>
